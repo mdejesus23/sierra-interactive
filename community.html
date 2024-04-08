@@ -14,7 +14,8 @@
     <div
       class="filter-checkbox"
       style="
-        margin-bottom: 20px;
+        max-width: 70%;
+        margin: 20px auto;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -23,42 +24,88 @@
         gap: 0.5rem;
       "
     >
-      <div class="filter-something" style="margin-bottom: 20px">
+      <div class="filter-something" style="margin-bottom: 18px">
         <div class="something-head">
           <h6
             class="something-h6"
-            style="color: #18305f !important; margin-bottom: 10px"
+            style="
+              color: #18305f !important;
+              margin-bottom: 10px;
+              font-size: 16px;
+            "
           >
-            SOMETHING
+            HOA DUES
           </h6>
         </div>
+
         <div class="something-checkbox border-right" style="padding: 10px">
           <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
             <input
               type="checkbox"
-              name="SomethingA"
-              id="SomethingA"
+              name="hoa_dues_1"
+              id="hoa_dues_1"
               class="filter-checkbox something-checkbox"
-              value="SomethingA"
-              data-uw-rm-form="nfx"
+              value="hoa_dues_1"
               style="margin-right: 5px"
             />
-            <label for="SomethingA" data-uw-rm-sr="" style="margin-bottom: 0"
-              >Something A</label
+            <label for="hoa_dues_1" style="margin-bottom: 0"
+              >A. $100 - $300</label
             >
           </div>
+
           <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
             <input
               type="checkbox"
-              name="SomethingB"
-              id="SomethingB"
+              name="hoa_dues_2"
+              id="hoa_dues_2"
               class="filter-checkbox something-checkbox"
-              value="SomethingB"
-              data-uw-rm-form="nfx"
+              value="hoa_dues_2"
               style="margin-right: 5px"
             />
-            <label for="SomethingB" data-uw-rm-sr="" style="margin-bottom: 0"
-              >Something B</label
+            <label for="hoa_dues_2" style="margin-bottom: 0"
+              >B. $300 - $400</label
+            >
+          </div>
+
+          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
+            <input
+              type="checkbox"
+              name="hoa_dues_3"
+              id="hoa_dues_3"
+              class="filter-checkbox something-checkbox"
+              value="hoa_dues_3"
+              style="margin-right: 5px"
+            />
+            <label for="hoa_dues_3" style="margin-bottom: 0"
+              >C. $400 - $600</label
+            >
+          </div>
+
+          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
+            <input
+              type="checkbox"
+              name="hoa_dues_4"
+              id="hoa_dues_4"
+              class="filter-checkbox something-checkbox"
+              value="hoa_dues_4"
+              style="margin-right: 5px"
+            />
+            <label for="hoa_dues_4" style="margin-bottom: 0"
+              >D. $600 - $800</label
+            >
+          </div>
+
+          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
+            <input
+              type="checkbox"
+              name="hoa_dues_5"
+              id="hoa_dues_5"
+              class="filter-checkbox something-checkbox"
+              value="hoa_dues_5"
+              style="margin-right: 5px"
+            />
+            <label for="hoa_dues_5" style="margin-bottom: 0"
+              >E. $800 - $1,100</label
             >
           </div>
           <!-- More checkbox-pair elements with similar inline styles -->
@@ -67,7 +114,47 @@
       <!-- More filter sections can be added similarly -->
     </div>
 
-    <div style="margin: 1rem auto; width: 100%" id="main-cont"></div>
+    <div style="margin: 14px auto; width: 100%" id="main-cont"></div>
+
+    <script>
+      function generateFilterHTML() {
+        return `
+    <div class="filter-checkbox" style="max-width: 70%; margin: 20px auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+        <div class="filter-something" style="margin-bottom: 18px;">
+            <div class="something-head">
+                <h6 class="something-h6" style="color: #18305f !important; margin-bottom: 10px; font-size: 16px;">HOA DUES</h6>
+            </div>
+            <div class="something-checkbox border-right" style="padding: 10px;">
+                ${generateCheckboxes()}
+            </div>
+        </div>
+    </div>`;
+      }
+
+      function generateCheckboxes() {
+        const checkboxes = [
+          { id: "hoa_dues_1", label: "A. $100 - $300" },
+          { id: "hoa_dues_2", label: "B. $300 - $400" },
+          { id: "hoa_dues_3", label: "C. $400 - $600" },
+          { id: "hoa_dues_4", label: "D. $600 - $800" },
+          { id: "hoa_dues_5", label: "E. $800 - $1,100" },
+        ];
+
+        return checkboxes
+          .map((item) => {
+            return `
+        <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+            <input type="checkbox" name="${item.id}" id="${item.id}" class="filter-checkbox something-checkbox" value="${item.id}" style="margin-right: 5px;">
+            <label for="${item.id}" style="margin-bottom: 0;">${item.label}</label>
+        </div>`;
+          })
+          .join("");
+      }
+
+      // Usage:
+      const filterHTML = generateFilterHTML();
+      console.log(filterHTML);
+    </script>
 
     <script>
       const commData = [
@@ -151,7 +238,7 @@
           let amenitiesData = "";
           amenities.forEach((amen) => {
             amenitiesData += `
-              <li style="font-size: 1.6rem">${amen}</li>
+              <li style="font-size: 16px">${amen}</li>
             `;
           });
 
@@ -162,49 +249,49 @@
                 <img style="width: 100%; height: 100%" src="${img}" alt="${name} image" />
             </div>
 
-            <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; background-color: #f9f9f9; border-radius: 10px;">
+            <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">
 
-                <div style="width: 100%; height: 3.125rem; display: flex; justify-content: center; 
-                align-items: center; margin-bottom: 1rem; font-size: 2.1875rem;">${name}</div>
+                <div style="width: 100%; height: 20px; display: flex; justify-content: center; 
+                align-items: center; margin-bottom: 1rem; font-size: 40px;">${name}</div>
 
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid white;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0.5rem;">
-                        <p>Prices Starting</p>
+                <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid white;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 8px;">
+                        <p>Prices</p>
                         <p>${prices}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 0.8rem 0.5rem; border-top: 1px solid white; ">
+                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
                         <p>Home Type</p>
                         <p>${homeType}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 0.8rem 0.5rem; border-top: 1px solid white; ">
+                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
                         <p>Square Feet</p>
                         <p>${squareFeet}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 0.8rem 0.5rem; border-top: 1px solid white; ">
+                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
                         <p>Number of Homes</p>
                         <p>${numberOfHomes}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 0.8rem 0.5rem; border-top: 1px solid white; ">
+                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
                         <p>Gated</p>
                         <p>${gated}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 0.8rem 0.5rem; border-top: 1px solid white; ">
+                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
                         <p>${desc}</p>
                     </div>
                 </div>
                 
                 <div id="amenities_modal_${id}" class="modal" style="position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-                  <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 60%; max-width: 500px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
+                  <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 10px; border: 1px solid #888; max-width: 50%; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
                     <span onclick="closeModal(${id})" class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-                    <p style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">Amenities for ${name}:</p>
-                    <ul style=" padding: 0 15px;">
+                    <p style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Amenities for ${name}:</p>
+                    <ul style="display: flex; flex-direction: column; flex-wrap: wrap; column-gap: 10px; height: 200px; padding: 5pxs 15px; max-width: 60%;">
                       ${amenitiesData}
                     </ul>
                   </div>
                 </div>
 
 
-                <div id="controller" style="margin-top: 1.5rem; display: flex; justify-content: left; align-items: center; flex-wrap: wrap; row-gap: 5px;">
+                <div id="controller" style="margin-top: 12px; display: flex; justify-content: left; align-items: center; flex-wrap: wrap; row-gap: 5px;">
                     <button 
                       onclick="scheduleAppointmentHandler(${id})" 
                       id="schedule_${id}" 
@@ -318,7 +405,7 @@
           const gridContainers = document.querySelectorAll(".grid-container");
           gridContainers.forEach((container) => {
             container.style.gridTemplateColumns = "1fr 1fr";
-            container.style.gap = "1rem";
+            container.style.gap = "15px";
           });
         }
       }
