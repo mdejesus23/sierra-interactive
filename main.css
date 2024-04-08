@@ -1,0 +1,44 @@
+/* These CSS variables are global, so they are available in all CSS modules */
+:root {
+  --si-secondary-color-800: rgb(12, 11, 44);
+  --si-secondary-text-color-rgb: rgba(255, 255, 255, 0.7);
+  --si-primary-color-500: rgb(212, 175, 80);
+}
+
+html {
+  font-size: 80%;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+.sample {
+  color: rgb(1, 0, 24);
+}
+
+p {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  html {
+    font-size: 56%;
+  }
+}
