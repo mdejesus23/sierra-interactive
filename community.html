@@ -11,142 +11,123 @@
       Find communities in Lakewood
     </h1>
 
-    <div
-      class="filter-checkbox"
-      style="
-        max-width: 70%;
-        margin: 20px auto;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-      "
-    >
-      <div class="filter-something" style="margin-bottom: 18px">
-        <div class="something-head">
-          <h6
-            class="something-h6"
-            style="
-              color: #18305f !important;
-              margin-bottom: 10px;
-              font-size: 16px;
-            "
-          >
-            HOA DUES
-          </h6>
-        </div>
-
-        <div class="something-checkbox border-right" style="padding: 10px">
-          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
-            <input
-              type="checkbox"
-              name="hoa_dues_1"
-              id="hoa_dues_1"
-              class="filter-checkbox something-checkbox"
-              value="hoa_dues_1"
-              style="margin-right: 5px"
-            />
-            <label for="hoa_dues_1" style="margin-bottom: 0"
-              >A. $100 - $300</label
-            >
-          </div>
-
-          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
-            <input
-              type="checkbox"
-              name="hoa_dues_2"
-              id="hoa_dues_2"
-              class="filter-checkbox something-checkbox"
-              value="hoa_dues_2"
-              style="margin-right: 5px"
-            />
-            <label for="hoa_dues_2" style="margin-bottom: 0"
-              >B. $300 - $400</label
-            >
-          </div>
-
-          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
-            <input
-              type="checkbox"
-              name="hoa_dues_3"
-              id="hoa_dues_3"
-              class="filter-checkbox something-checkbox"
-              value="hoa_dues_3"
-              style="margin-right: 5px"
-            />
-            <label for="hoa_dues_3" style="margin-bottom: 0"
-              >C. $400 - $600</label
-            >
-          </div>
-
-          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
-            <input
-              type="checkbox"
-              name="hoa_dues_4"
-              id="hoa_dues_4"
-              class="filter-checkbox something-checkbox"
-              value="hoa_dues_4"
-              style="margin-right: 5px"
-            />
-            <label for="hoa_dues_4" style="margin-bottom: 0"
-              >D. $600 - $800</label
-            >
-          </div>
-
-          <div class="checkbox-pair" style="display: flex; margin-bottom: 10px">
-            <input
-              type="checkbox"
-              name="hoa_dues_5"
-              id="hoa_dues_5"
-              class="filter-checkbox something-checkbox"
-              value="hoa_dues_5"
-              style="margin-right: 5px"
-            />
-            <label for="hoa_dues_5" style="margin-bottom: 0"
-              >E. $800 - $1,100</label
-            >
-          </div>
-          <!-- More checkbox-pair elements with similar inline styles -->
-        </div>
-      </div>
-      <!-- More filter sections can be added similarly -->
-    </div>
+    <div id="filter-section"></div>
 
     <div style="margin: 14px auto; width: 100%" id="main-cont"></div>
 
+    <script></script>
+
     <script>
+      // filter sections
+      const filterElement = document.getElementById("filter-section");
+
       function generateFilterHTML() {
         return `
-    <div class="filter-checkbox" style="max-width: 70%; margin: 20px auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
-        <div class="filter-something" style="margin-bottom: 18px;">
+    <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto;">
+      <div id="filter" class="filter-checkbox" style="width: 90%; margin: 20px auto; padding: 5px; display: grid; gap: 12px;">
+        <div class="filter-something" style="border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
             <div class="something-head">
-                <h6 class="something-h6" style="color: #18305f !important; margin-bottom: 10px; font-size: 16px;">HOA DUES</h6>
+                <h6 class="something-h6" style="text-align: center; margin-bottom: 10px; font-size: 18px; color: #18305f;">HOA DUES</h6>
             </div>
-            <div class="something-checkbox border-right" style="padding: 10px;">
-                ${generateCheckboxes()}
+            <div class="something-checkbox" style="padding: 10px;">
+                ${generateHoaduesInput()}
             </div>
         </div>
-    </div>`;
+
+        <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
+            <div class="something-head">
+                <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Home Type</h6>
+            </div>
+            <div class="something-checkbox" style="padding: 10px;">
+                ${generateHomeTypeInput()}
+            </div>
+        </div>
+
+        <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
+            <div class="something-head">
+                <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Amenities</h6>
+            </div>
+            <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                ${generateAmenitiesInput()}
+            </div>
+        </div>
+      </div>
+      <div style="margin: 10px auto; width: 80%; display: flex; justify-content: center; gap: 15px; ">
+        <button id="filter" onclick="filter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Apply Filter</butto>
+        <button id="reset" onclick="resetFilter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Reset Filter</butto>
+      </div>
+    </div>
+  `;
       }
 
-      function generateCheckboxes() {
+      function generateHoaduesInput() {
         const checkboxes = [
-          { id: "hoa_dues_1", label: "A. $100 - $300" },
-          { id: "hoa_dues_2", label: "B. $300 - $400" },
-          { id: "hoa_dues_3", label: "C. $400 - $600" },
-          { id: "hoa_dues_4", label: "D. $600 - $800" },
-          { id: "hoa_dues_5", label: "E. $800 - $1,100" },
+          { id: "hoa_dues_1", label: "A. $100 - $300", val: "100 to 300" },
+          { id: "hoa_dues_2", label: "B. $300 - $400", val: "300 to 400" },
+          { id: "hoa_dues_3", label: "C. $400 - $600", val: "400 to 600" },
+          { id: "hoa_dues_4", label: "D. $600 - $800", val: "600 to 800" },
+          { id: "hoa_dues_5", label: "E. $800 - $1,100", val: "800 to 1100" },
         ];
 
         return checkboxes
           .map((item) => {
+            const { id, label, val } = item;
+
             return `
-        <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
-            <input type="checkbox" name="${item.id}" id="${item.id}" class="filter-checkbox something-checkbox" value="${item.id}" style="margin-right: 5px;">
-            <label for="${item.id}" style="margin-bottom: 0;">${item.label}</label>
-        </div>`;
+            <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                <input type="radio" name="${id}" data-price="${val}" id="${id}" class="filter-radio-price something-radio" style="margin-right: 5px; font-size: 16px;">
+                <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
+            </div>`;
+          })
+          .join("");
+      }
+
+      function generateHomeTypeInput() {
+        const checkboxes = [
+          { id: "home_type_1", label: "Single Family", val: "Single Family" },
+          { id: "home_type_2", label: "Villa", val: "Villa" },
+          { id: "home_type_3", label: "Condo", val: "Condo" },
+          { id: "home_type_4", label: "Townhome", val: "Townhome" },
+          { id: "home_type_5", label: "Custom", val: "Custom" },
+        ];
+
+        return checkboxes
+          .map((item) => {
+            const { id, label, val } = item;
+            return `
+              <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                  <input type="radio" name="${id}" id="${id}" data-home-type=${val}"" class="filter-radio something-radio" style="margin-right: 5px; font-size: 16px;">
+                  <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${label}</label>
+              </div>`;
+          })
+          .join("");
+      }
+
+      function generateAmenitiesInput() {
+        const checkboxes = [
+          { id: "amenities_1", label: "Clubhouse" },
+          { id: "amenities_2", label: "Pool" },
+          { id: "amenities_3", label: "Fitness Center" },
+          { id: "amenities_4", label: "Lifestyle Director" },
+          { id: "amenities_5", label: "Dog Park" },
+          { id: "amenities_6", label: "Tot Lot" },
+          { id: "amenities_7", label: "Golf" },
+          { id: "amenities_8", label: "Tennis" },
+          { id: "amenities_9", label: "Pickleball" },
+          { id: "amenities_10", label: "Bar/Restaurant" },
+          { id: "amenities_11", label: "Age Restricted" },
+          { id: "amenities_12", label: "Maint. Included" },
+          { id: "amenities_13", label: "Gated" },
+        ];
+
+        return checkboxes
+          .map((item) => {
+            const { id, label } = item;
+            return `
+              <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                  <input type="radio" name="${id}" id="${id}" data-amenities="${label}" class="filter-radio something-radio" style="margin-right: 5px; font-size: 16px;">
+                  <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
+              </div>`;
           })
           .join("");
       }
@@ -154,15 +135,18 @@
       // Usage:
       const filterHTML = generateFilterHTML();
       console.log(filterHTML);
-    </script>
+      filterElement.innerHTML = filterHTML;
 
-    <script>
+      // end filter section
+
       const commData = [
         {
           id: 1,
           name: "Aurora",
           prices: "Low $300's",
-          homeType: ["Townhomes, Single-Family"],
+          priceVal: "100 to 300",
+          homeType: ["Townhomes, Single Family"],
+          amenities: ["Pool", "Tot Lot"],
           squareFeet: "1,347 - 2,382",
           numberOfHomes: 300,
           gated: "No",
@@ -170,13 +154,14 @@
           build: "Yes",
           img: "https://assets.site-static.com/userFiles/666/image/aurora/aurora.png",
           desc: "Auroa offers Town-Homes and Patio Homes located in Lakewood Ranch and will start in Low $300's.",
-          amenities: ["Pool", "Tot Lot"],
         },
         {
           id: 2,
           name: "Avalon Woods",
           prices: "From $300s to $400s",
+          priceVal: "300 to 400",
           homeType: ["Townhomes, Single-Family"],
+          amenities: ["Dog Park", "Tot Lot"],
           squareFeet: "1,440 - 2,370",
           numberOfHomes: 339,
           gated: "No",
@@ -184,13 +169,13 @@
           build: "Yes",
           img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/avalon.png",
           desc: "Avalon Woods presents a living experience that combines the beauty of natural surroundings with the convenience of contemporary amenities, offering a lifestyle tailored to both leisure and elegance.",
-          amenities: ["Dog Park", "Tot Lot"],
         },
         {
           id: 3,
           name: "Azario Esplanade",
           prices: "$500s - $1M+",
-          homeType: ["Paired/Attached Villas, Single-Family"],
+          priceVal: "400 to 600",
+          homeType: ["Paired/Attached Villas", "Single Family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 1300,
           gated: "Yes",
@@ -214,12 +199,57 @@
         },
       ];
 
-      const main = document.getElementById("main-cont");
+      // filter function
+      function filter() {
+        const priceInput = document.querySelectorAll(".filter-radio-price");
 
-      function generateData() {
+        filterByPrice(priceInput);
+        uncheckButton(priceInput);
+        hideAllModal();
+      }
+
+      function filterByPrice(priceInput) {
+        let priceValue = [];
+        const toFilterData = [...commData];
+        const filteredData = [];
+
+        // get the checked button
+        priceInput.forEach((input) => {
+          if (input.checked) {
+            priceValue.push(input.getAttribute("data-price"));
+          }
+        });
+
+        priceValue.forEach((price) => {
+          const filteredByRange = toFilterData.filter(
+            (item) => item.priceVal === price
+          );
+          filteredData.push(...filteredByRange);
+        });
+
+        generateData(filteredData);
+      }
+
+      function uncheckButton(inputButton) {
+        inputButton.forEach((input) => {
+          input.checked = false;
+        });
+      }
+
+      const main = document.getElementById("main-cont");
+      const rootFilter = document.getElementById("filter-root");
+
+      function resetFilter() {
+        generateData(commData);
+        hideAllModal();
+      }
+
+      function generateData(filterData) {
         let content = "";
 
-        commData.forEach((data) => {
+        // const listData = filterData || commData;
+
+        filterData.forEach((data) => {
           const {
             id,
             name,
@@ -330,7 +360,7 @@
         main.innerHTML = content;
       }
 
-      generateData();
+      generateData(commData);
 
       function scheduleAppointmentHandler(id) {
         alert(id);
@@ -368,6 +398,10 @@
 
         if (viewportWidth <= 850) {
           main.style.width = "95%";
+          rootFilter.style.width = "95%";
+
+          const filterBox = document.getElementById("filter");
+          filterBox.style.gridTemplateColumns = "1fr";
 
           const imageContainer = document.querySelectorAll(".img-cont");
           imageContainer.forEach((cont) => {
@@ -381,6 +415,7 @@
           });
         } else if (viewportWidth > 850 && viewportWidth < 1200) {
           main.style.width = "80%";
+          rootFilter.style.width = "80%";
 
           const imageContainer = document.querySelectorAll(".img-cont");
           imageContainer.forEach((cont) => {
@@ -395,6 +430,10 @@
           });
         } else {
           main.style.width = "80%";
+          rootFilter.style.width = "80%";
+
+          const filterBox = document.getElementById("filter");
+          filterBox.style.gridTemplateColumns = "repeat(3, 1fr)";
 
           const imageContainer = document.querySelectorAll(".img-cont");
           imageContainer.forEach((cont) => {
