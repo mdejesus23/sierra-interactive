@@ -23,41 +23,41 @@
 
       function generateFilterHTML() {
         return `
-    <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto;">
-      <div id="filter" class="filter-checkbox" style="width: 90%; margin: 20px auto; padding: 5px; display: grid; gap: 12px;">
-        <div class="filter-something" style="border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="text-align: center; margin-bottom: 10px; font-size: 18px; color: #18305f;">HOA DUES</h6>
+        <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto;">
+          <div id="filter" class="filter-checkbox" style="width: 90%; margin: 20px auto; padding: 5px; display: grid; gap: 12px;">
+            <div class="filter-something" style="border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
+                <div class="something-head">
+                    <h6 class="something-h6" style="text-align: center; margin-bottom: 10px; font-size: 18px; color: #18305f;">HOA DUES</h6>
+                </div>
+                <div class="something-checkbox" style="padding: 10px;">
+                    ${generateHoaduesInput()}
+                </div>
             </div>
-            <div class="something-checkbox" style="padding: 10px;">
-                ${generateHoaduesInput()}
-            </div>
-        </div>
 
-        <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Home Type</h6>
+            <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
+                <div class="something-head">
+                    <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Home Type</h6>
+                </div>
+                <div class="something-checkbox" style="padding: 10px;">
+                    ${generateHomeTypeInput()}
+                </div>
             </div>
-            <div class="something-checkbox" style="padding: 10px;">
-                ${generateHomeTypeInput()}
-            </div>
-        </div>
 
-        <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Amenities</h6>
+            <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
+                <div class="something-head">
+                    <h6 class="something-h6" style="margin-bottom: 10px; font-size: 18px; color: #18305f;">Amenities</h6>
+                </div>
+                <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                    ${generateAmenitiesInput()}
+                </div>
             </div>
-            <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                ${generateAmenitiesInput()}
-            </div>
+          </div>
+          <div style="margin: 10px auto; width: 80%; display: flex; justify-content: center; gap: 15px; ">
+            <button id="filter" onclick="filter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Apply Filter</butto>
+            <button id="reset" onclick="resetFilter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Reset Filter</butto>
+          </div>
         </div>
-      </div>
-      <div style="margin: 10px auto; width: 80%; display: flex; justify-content: center; gap: 15px; ">
-        <button id="filter" onclick="filter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Apply Filter</butto>
-        <button id="reset" onclick="resetFilter()" style="border: none; padding: 15px 30px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;">Reset Filter</butto>
-      </div>
-    </div>
-  `;
+      `;
       }
 
       function generateHoaduesInput() {
@@ -74,17 +74,17 @@
             const { id, label, val } = item;
 
             return `
-            <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
-                <input type="radio" name="${id}" data-price="${val}" id="${id}" class="filter-radio-price something-radio" style="margin-right: 5px; font-size: 16px;">
-                <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
-            </div>`;
+                <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                    <input type="radio" name="${id}" data-price="${val}" id="${id}" class="filter-radio-price something-radio" style="margin-right: 5px; font-size: 16px;">
+                    <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
+                </div>`;
           })
           .join("");
       }
 
       function generateHomeTypeInput() {
         const checkboxes = [
-          { id: "home_type_1", label: "Single Family", val: "Single Family" },
+          { id: "home_type_1", label: "Single Family", val: "Single family" },
           { id: "home_type_2", label: "Villa", val: "Villa" },
           { id: "home_type_3", label: "Condo", val: "Condo" },
           { id: "home_type_4", label: "Townhome", val: "Townhome" },
@@ -95,10 +95,10 @@
           .map((item) => {
             const { id, label, val } = item;
             return `
-              <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
-                  <input type="radio" name="${id}" id="${id}" data-home-type=${val}"" class="filter-radio something-radio" style="margin-right: 5px; font-size: 16px;">
-                  <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${label}</label>
-              </div>`;
+                  <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                      <input type="radio" name="${id}" id="${id}" data-homeType="${val}" class="home-type something-radio" style="margin-right: 5px; font-size: 16px;">
+                      <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${label}</label>
+                  </div>`;
           })
           .join("");
       }
@@ -124,10 +124,10 @@
           .map((item) => {
             const { id, label } = item;
             return `
-              <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
-                  <input type="radio" name="${id}" id="${id}" data-amenities="${label}" class="filter-radio something-radio" style="margin-right: 5px; font-size: 16px;">
-                  <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
-              </div>`;
+                  <div class="checkbox-pair" style="display: flex; margin-bottom: 10px;">
+                      <input type="radio" name="${id}" id="${id}" data-amenities="${label}" class="filter-radio something-radio" style="margin-right: 5px; font-size: 16px;">
+                      <label for="${id}" style="margin-bottom: 0; font-size: 16px; color: #18305f;">${item.label}</label>
+                  </div>`;
           })
           .join("");
       }
@@ -145,7 +145,7 @@
           name: "Aurora",
           prices: "Low $300's",
           priceVal: "100 to 300",
-          homeType: ["Townhomes, Single Family"],
+          homeType: ["Townhomes", "Single family"],
           amenities: ["Pool", "Tot Lot"],
           squareFeet: "1,347 - 2,382",
           numberOfHomes: 300,
@@ -160,7 +160,7 @@
           name: "Avalon Woods",
           prices: "From $300s to $400s",
           priceVal: "300 to 400",
-          homeType: ["Townhomes, Single-Family"],
+          homeType: ["Townhomes", "Villa"],
           amenities: ["Dog Park", "Tot Lot"],
           squareFeet: "1,440 - 2,370",
           numberOfHomes: 339,
@@ -175,7 +175,7 @@
           name: "Azario Esplanade",
           prices: "$500s - $1M+",
           priceVal: "400 to 600",
-          homeType: ["Paired/Attached Villas", "Single Family"],
+          homeType: ["Paired/Attached Villas", "Single family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 1300,
           gated: "Yes",
@@ -198,19 +198,22 @@
           ],
         },
       ];
+      // let toFilterData = [...commData];
 
       // filter function
       function filter() {
-        const priceInput = document.querySelectorAll(".filter-radio-price");
+        const filterByPriceData = filterByPrice();
+        filterByHomeType(filterByPriceData);
 
-        filterByPrice(priceInput);
-        uncheckButton(priceInput);
+        // uncheckButton(priceInput);
         hideAllModal();
       }
 
-      function filterByPrice(priceInput) {
+      function filterByPrice() {
+        const priceInput = document.querySelectorAll(".filter-radio-price");
+
         let priceValue = [];
-        const toFilterData = [...commData];
+        let toFilterData = [...commData];
         const filteredData = [];
 
         // get the checked button
@@ -220,29 +223,82 @@
           }
         });
 
-        priceValue.forEach((price) => {
-          const filteredByRange = toFilterData.filter(
-            (item) => item.priceVal === price
-          );
-          filteredData.push(...filteredByRange);
-        });
+        if (priceValue.length !== 0) {
+          priceValue.forEach((price) => {
+            const filteredByRange = toFilterData.filter(
+              (item) => item.priceVal === price
+            );
+            filteredData.push(...filteredByRange);
+          });
 
-        generateData(filteredData);
+          generateData(filteredData);
+        }
+
+        uncheckButton(priceInput);
+        return filteredData;
       }
 
-      function uncheckButton(inputButton) {
-        inputButton.forEach((input) => {
+      function filterByHomeType(data) {
+        console.log("data", data);
+        const homeTypeInput = document.querySelectorAll(".home-type");
+
+        let homeTypeVal = [];
+        const toFilterData = data.length !== 0 ? [...data] : [...commData];
+        const filteredData = [];
+
+        console.log("toFilterData", toFilterData);
+        // get the checked button
+        homeTypeInput.forEach((opt) => {
+          console.log(opt.checked);
+          if (opt.checked) {
+            homeTypeVal.push(opt.getAttribute("data-homeType"));
+          }
+        });
+
+        console.log("homeTypeVal", homeTypeVal);
+
+        if (homeTypeVal.length !== 0) {
+          homeTypeVal.forEach((type) => {
+            const filteredByType = toFilterData.filter((item) => {
+              return item.homeType.includes(type);
+            });
+
+            filteredData.push(...filteredByType);
+          });
+
+          console.log(filteredData);
+
+          generateData(filteredData);
+        }
+        uncheckButton(homeTypeInput);
+      }
+
+      function uncheckButton(input) {
+        input.forEach((input) => {
           input.checked = false;
         });
       }
 
-      const main = document.getElementById("main-cont");
-      const rootFilter = document.getElementById("filter-root");
-
       function resetFilter() {
+        const priceInput = document.querySelectorAll(".filter-radio-price");
+        const homeTypeInput = document.querySelectorAll(".home-type");
+
+        priceInput.forEach((input) => {
+          input.checked = false;
+        });
+
+        homeTypeInput.forEach((input) => {
+          input.checked = false;
+        });
+
+        // toFilterData = [...commData];
         generateData(commData);
         hideAllModal();
+        uncheckButton();
       }
+
+      const main = document.getElementById("main-cont");
+      const rootFilter = document.getElementById("filter-root");
 
       function generateData(filterData) {
         let content = "";
@@ -268,93 +324,93 @@
           let amenitiesData = "";
           amenities.forEach((amen) => {
             amenitiesData += `
-              <li style="font-size: 16px">${amen}</li>
-            `;
+                  <li style="font-size: 16px">${amen}</li>
+                `;
           });
 
           content += `
-          <div class="grid-container" style="background-color: #ebebfa; display: grid; grid-template-columns: 1fr 1fr; margin: 3rem auto; max-width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); transition: box-shadow 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19)';" onmouseout="this.style.boxShadow='0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)';">
+              <div class="grid-container" style="background-color: #ebebfa; display: grid; grid-template-columns: 1fr 1fr; margin: 3rem auto; max-width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); transition: box-shadow 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19)';" onmouseout="this.style.boxShadow='0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)';">
 
-            <div class="img-cont" style="clip-path: polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%);">
-                <img style="width: 100%; height: 100%" src="${img}" alt="${name} image" />
-            </div>
-
-            <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">
-
-                <div style="width: 100%; height: 20px; display: flex; justify-content: center; 
-                align-items: center; margin-bottom: 1rem; font-size: 40px;">${name}</div>
-
-                <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid white;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 8px;">
-                        <p>Prices</p>
-                        <p>${prices}</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
-                        <p>Home Type</p>
-                        <p>${homeType}</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
-                        <p>Square Feet</p>
-                        <p>${squareFeet}</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
-                        <p>Number of Homes</p>
-                        <p>${numberOfHomes}</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
-                        <p>Gated</p>
-                        <p>${gated}</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
-                        <p>${desc}</p>
-                    </div>
-                </div>
-                
-                <div id="amenities_modal_${id}" class="modal" style="position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-                  <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 10px; border: 1px solid #888; max-width: 50%; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
-                    <span onclick="closeModal(${id})" class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-                    <p style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Amenities for ${name}:</p>
-                    <ul style="display: flex; flex-direction: column; flex-wrap: wrap; column-gap: 10px; height: 200px; padding: 5pxs 15px; max-width: 60%;">
-                      ${amenitiesData}
-                    </ul>
-                  </div>
+                <div class="img-cont" style="clip-path: polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%);">
+                    <img style="width: 100%; height: 100%" src="${img}" alt="${name} image" />
                 </div>
 
+                <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">
 
-                <div id="controller" style="margin-top: 12px; display: flex; justify-content: left; align-items: center; flex-wrap: wrap; row-gap: 5px;">
-                    <button 
-                      onclick="scheduleAppointmentHandler(${id})" 
-                      id="schedule_${id}" 
-                      style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;"
-                      onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                      onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-                    >
-                      Schedule an Appointment
-                    </button>
+                    <div style="width: 100%; height: 20px; display: flex; justify-content: center;
+                    align-items: center; margin-bottom: 1rem; font-size: 40px;">${name}</div>
 
-                    <button 
-                      onclick="scheduleAppointmentHandler(${id})" 
-                      id="home_sale_${id}" 
-                      style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
-                      onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                      onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-                    >
-                      Homes for Sale
-                    </button>
+                    <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid white;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 8px;">
+                            <p>Prices</p>
+                            <p>${prices}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
+                            <p>Home Type</p>
+                            <p>${homeType}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
+                            <p>Square Feet</p>
+                            <p>${squareFeet}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
+                            <p>Number of Homes</p>
+                            <p>${numberOfHomes}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
+                            <p>Gated</p>
+                            <p>${gated}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 8px; border-top: 1px solid white; ">
+                            <p>${desc}</p>
+                        </div>
+                    </div>
 
-                    <button 
-                      onclick="showAmenities(${id})" 
-                      id="amenities_btn_${id}" 
-                      style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
-                      onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                      onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-                    >
-                      Amenities
-                    </button>
+                    <div id="amenities_modal_${id}" class="modal" style="position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+                      <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 10px; border: 1px solid #888; max-width: 50%; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
+                        <span onclick="closeModal(${id})" class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+                        <p style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Amenities for ${name}:</p>
+                        <ul style="display: flex; flex-direction: column; flex-wrap: wrap; column-gap: 10px; height: 200px; padding: 5pxs 15px; max-width: 60%;">
+                          ${amenitiesData}
+                        </ul>
+                      </div>
+                    </div>
+
+
+                    <div id="controller" style="margin-top: 12px; display: flex; justify-content: left; align-items: center; flex-wrap: wrap; row-gap: 5px;">
+                        <button
+                          onclick="scheduleAppointmentHandler(${id})"
+                          id="schedule_${id}"
+                          style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;"
+                          onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
+                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
+                        >
+                          Schedule an Appointment
+                        </button>
+
+                        <button
+                          onclick="scheduleAppointmentHandler(${id})"
+                          id="home_sale_${id}"
+                          style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
+                          onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
+                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
+                        >
+                          Homes for Sale
+                        </button>
+
+                        <button
+                          onclick="showAmenities(${id})"
+                          id="amenities_btn_${id}"
+                          style="background-color: var(--si-secondary-color-800); padding: 1rem 1.3rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
+                          onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
+                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
+                        >
+                          Amenities
+                        </button>
+                    </div>
                 </div>
-            </div>
-          </div>
-          `;
+              </div>
+              `;
         });
 
         main.innerHTML = content;
