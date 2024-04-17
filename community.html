@@ -12,7 +12,9 @@
     </h1>
 
     <div id="filter-section"></div>
-
+    <!-- <div style="margin: 10px auto; text-align: center">
+      Number of Communities: <spam id="num_communities"></spam>
+    </div> -->
     <div style="margin: 14px auto; width: 100%" id="main-cont"></div>
 
     <button
@@ -71,44 +73,41 @@
 
       function generateFilterHTML() {
         return `
-        <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto; width: 100%;">
-          <div id="filter" class="filter-checkbox" style="width: 90%; margin: 20px auto; padding: 5px; display: grid; gap: 12px;">
-            <div class="filter-something" style="border-radius: 10px; margin-bottom: 18px; background-color: #f8f9fa;">
-                <div class="something-head">
-                    <h6 class="something-h6" style="text-align: center; margin-bottom: 10px; font-size: 1.4rem; color: #18305f;">HOA DUES</h6>
-                </div>
-                <div class="something-checkbox" style="padding: 8px;">
-                    ${generateHoaduesInput()}
-                </div>
+        <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto; width: 90%; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 20px;">
+    <div id="filter" class="filter-checkbox" style="width: 100%; display: grid; gap: 20px;">
+        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+            <div class="something-head">
+                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">HOA DUES</h6>
             </div>
-
-            <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 1.4rem; background-color: #f8f9fa;">
-                <div class="something-head">
-                    <h6 class="something-h6" style="margin-bottom: 10px; font-size: 1.4rem; color: #18305f;">Home Type</h6>
-                </div>
-                <div class="something-checkbox" style="padding: 10px;">
-                    ${generateHomeTypeInput()}
-                </div>
+            <div class="something-checkbox" style="padding: 8px;">
+                ${generateHoaduesInput()}
             </div>
-
-            <div class="filter-something" style="text-align: center; border-radius: 10px; margin-bottom: 1.4rem; background-color: #f8f9fa;">
-                <div class="something-head">
-                    <h6 class="something-h6" style="margin-bottom: 10px; font-size: 1.4rem; color: #18305f;">Amenities</h6>
-                </div>
-                <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                    ${generateAmenitiesInput()}
-                </div>
-            </div>
-          </div>
-          <div style="margin: 15px auto; width: 80%; display: flex; justify-content: center; gap: 25px; ">
-            <button id="filter" onclick="filter()" style="font-size: 1rem; border: none; padding: 5px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Apply Filter</butto>
-            <button id="reset" onclick="resetFilter()" style="font-size: 1rem; border: none; padding: 5px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px;"
-            onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-            onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-            >Reset Filter</butto>
-          </div>
         </div>
+
+        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+            <div class="something-head">
+                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Home Type</h6>
+            </div>
+            <div class="something-checkbox" style="padding: 10px;">
+                ${generateHomeTypeInput()}
+            </div>
+        </div>
+
+        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+            <div class="something-head">
+                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Amenities</h6>
+            </div>
+            <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                ${generateAmenitiesInput()}
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 25px;">
+        <button id="filter" onclick="filter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Apply Filter</button>
+        <button id="reset" onclick="resetFilter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Reset Filter</button>
+    </div>
+</div>
+
       `;
       }
 
@@ -119,6 +118,7 @@
           { id: "hoa_dues_3", label: "C. $400 - $600", val: "400 to 600" },
           { id: "hoa_dues_4", label: "D. $600 - $800", val: "600 to 800" },
           { id: "hoa_dues_5", label: "E. $800 - $1,100", val: "800 to 1100" },
+          { id: "hoa_dues_6", label: "F. $3M+", val: "3M+" },
         ];
 
         return checkboxes
@@ -198,6 +198,7 @@
       let hoa_dues_3 = false;
       let hoa_dues_4 = false;
       let hoa_dues_5 = false;
+      let hoa_dues_6 = false;
 
       let home_type_1 = false;
       let home_type_2 = false;
@@ -264,6 +265,13 @@
             }
             hoa_dues_5 = true;
             break;
+          case "hoa_dues_6":
+            if (hoa_dues_6) {
+              radioButton.checked = false;
+              hoa_dues_6 = false;
+              return;
+            }
+            hoa_dues_6 = true;
           default:
             // Handle default case if necessary
             break;
@@ -427,40 +435,41 @@
           id: 1,
           name: "Aurora",
           prices: "Low $300's",
-          priceVal: "100 to 300",
+          priceVal: ["100 to 300", "300 - 400"],
           homeType: ["Townhomes", "Single family"],
-          amenities: ["Pool", "Tot Lot"],
+          amenities: ["Tot Lot"],
           squareFeet: "1,347 - 2,382",
           numberOfHomes: 300,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/aurora/aurora.png",
+          img: "https://sierra-public.azureedge.net/bbd882c7-7b84-48b9-b9b4-e7d829a03234.jpg",
           desc: "Auroa offers Town-Homes and Patio Homes located in Lakewood Ranch and will start in Low $300's.",
-          amenities: ["Tot Lot"],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/aurora/",
         },
         {
           id: 2,
           name: "Avalon Woods",
           prices: "From $300s to $400s",
-          priceVal: "100 to 300",
+          priceVal: ["100 to 300", "300 to 400"],
           homeType: ["Townhomes", "Single Family"],
           amenities: ["Dog Park", "Tot Lot"],
           squareFeet: "1,440 - 2,370",
           numberOfHomes: 339,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/avalon.png",
+          img: "https://sierra-public.azureedge.net/ecbec5df-bcde-4d11-9b31-b776aa597e64.jpg",
           desc: "Avalon Woods presents a living experience that combines the beauty of natural surroundings with the convenience of contemporary amenities, offering a lifestyle tailored to both leisure and elegance.",
           amenities: ["Tot Lot", "Dog Park"],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/avalon-woods/",
         },
         {
           id: 3,
           name: "Azario Esplanade",
           prices: "$500s - $1M+",
-          priceVal: "400 to 600",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Paired/Attached Villas", "Single family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 1300,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/azario.png",
+          img: "https://sierra-public.azureedge.net/ba5a63d4-0e43-489c-a3fa-447b3c3d465d.jpg",
           desc: "Nestled in the heart of Lakewood Ranch Real Estate, Azario Esplanade stands as a testament to refined living, providing an idyllic retreat that perfectly balances relaxation and sophistication.",
           amenities: [
             "Clubhouse",
@@ -476,30 +485,33 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/azario/",
         },
         {
           id: 4,
           name: "Park East at Azario",
           prices: "$500s - $1M+",
-          priceVal: "100 to 300",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 307,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/park-east.png",
+          img: "https://sierra-public.azureedge.net/3efe82a2-b643-4f6d-83ab-b69af6f017fb.jpg",
           desc: "Azario - Park East offers a harmonious blend of natural allure and modern luxury, creating an inviting community that celebrates both comfort and style.",
           amenities: ["Pool", "Dog Park", "Tot Lot"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/park-east-at-azario/",
         },
         {
           id: 5,
           name: "Cresswind",
           prices: "$500s - $1M+",
-          priceVal: "400 to 600",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single family"],
           squareFeet: "1,500 - 3,500",
           numberOfHomes: 648,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Cresswind.png",
+          img: "https://sierra-public.azureedge.net/df0bec45-de05-47e5-8ed7-990fe05e138b.jpg",
           desc: "Cresswind is more than just a community; it's a vibrant tapestry of active living and comfort. Here, every moment becomes an opportunity to embrace life's pleasures.",
           amenities: [
             "Clubhouse",
@@ -512,17 +524,19 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/cresswind-in-lakewood-ranch/",
         },
         {
           id: 6,
           name: "Lorraine Lakes",
           prices: "$500s - $1M+",
-          priceVal: "100 to 300",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Townhome", "villa", "Single Family"],
           squareFeet: "1,417 - 3,945",
           numberOfHomes: 1347,
           gated: "Yes",
-          img: "	https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/lorraine.png",
+          img: "https://sierra-public.azureedge.net/6fd00187-7f89-4c4a-a9d5-dada6fa28d2f.jpg",
           desc: "Lorraine Lakes is a portrait of natural beauty and modern elegance, inviting you to experience a lifestyle where every day feels like a picturesque escape.",
           amenities: [
             "Clubhouse",
@@ -536,17 +550,18 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/lorraine-lakes/",
         },
         {
           id: 7,
           name: "Monarch Acres",
           prices: "$3M+",
-          priceVal: "300 to 600",
+          priceVal: ["3M+"],
           homeType: ["Single Family"],
           squareFeet: "3,600 - 8,000",
           numberOfHomes: 8,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Monarch-Acres.png",
+          img: "https://sierra-public.azureedge.net/3b6b75d8-0b74-4442-9f64-f6ad7e6848fc.jpg",
           desc: "Monarch Acres is a realm of refined living, where every home is a masterpiece and every moment is an opportunity to bask in the artistry of life.",
           amenities: [
             "Clubhouse",
@@ -560,17 +575,19 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-monarch-acres/",
         },
         {
           id: 8,
           name: "Sapphire Point",
           prices: "$400s - $800s",
-          priceVal: "100 to 300",
+          priceVal: ["400 to 600", "600 to 800"],
           homeType: ["Single Family"],
           squareFeet: "1,433 - 5,363",
           numberOfHomes: 451,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Sapphire-Point.png",
+          img: "https://sierra-public.azureedge.net/5f4b568b-84b6-4bb0-baf3-07ebc46f1800.jpg",
           desc: "Sapphire Point offers an oasis of elegance and tranquility, where the sparkle of modern living meets the timeless allure of nature's beauty.",
           amenities: [
             "Clubhouse",
@@ -581,17 +598,19 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/sapphire-point-at-lakewood-ranch/",
         },
         {
           id: 9,
           name: "Solera",
           prices: "$400s - $800s",
-          priceVal: "100 to 300",
+          priceVal: ["400 to 600", "600 to 800"],
           homeType: ["Single Family"],
           squareFeet: "1,672 - 4,033",
           numberOfHomes: 672,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Solera.png",
+          img: "https://sierra-public.azureedge.net/76b76302-0e24-4436-839d-fe26b4631bd0.jpg",
           desc: "Solera presents a lifestyle that's as vibrant as it is tranquil, offering a community where energy and serenity coexist in perfect harmony.",
           amenities: [
             "Clubhouse",
@@ -600,17 +619,19 @@
             "Tot Lot",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/solera-at-lakewood-ranch/",
         },
         {
           id: 10,
           name: "Star Farms",
           prices: "$300s - $2M+",
-          priceVal: "100 to 300",
+          priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family", "Villa", "Townhomes"],
           squareFeet: "1,560 - 5,000",
           numberOfHomes: 1500,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Star-Farms.png",
+          img: "https://sierra-public.azureedge.net/70e38c38-6a96-4425-8044-06f0bc19733e.jpg",
           desc: "Star Farms is more than just a community; it's a constellation of modern comforts and natural wonders, where each day shines with new possibilities.",
           amenities: [
             "Clubhouse",
@@ -625,6 +646,7 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/star-farms/",
         },
         {
           id: 11,
@@ -635,7 +657,7 @@
           squareFeet: "1,452 - 3,651",
           numberOfHomes: 502,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Sweetwater.png",
+          img: "https://sierra-public.azureedge.net/7febfc8a-b2d5-4b7d-866e-239aa732ecc2.jpg",
           desc: "Sweetwater offers a taste of luxury living with a touch of natural charm, creating a community where sophistication and relaxation intertwine seamlessly.",
           amenities: [
             "Clubhouse",
@@ -646,17 +668,18 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/sweetwater/",
         },
         {
           id: 12,
           name: "The Isles",
           prices: "From $400s to $1,500s",
-          priceVal: "300 to 400",
+          priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "1,400 - 1,800",
           numberOfHomes: 450,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/isles.png",
+          img: "https://sierra-public.azureedge.net/d73b2156-9608-4eba-abf8-9d4822a99c6d.jpeg",
           desc: "The Isles presents a coastal-inspired living experience, where every day feels like a beachside getaway amidst the comfort of modern luxury.",
           amenities: [
             "Clubhouse",
@@ -668,17 +691,19 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/the-isles-at-lakewood-ranch/",
         },
         {
           id: 13,
           name: "The Lake Club",
           prices: "$1M - 5M+",
-          priceVal: "400 to 600",
+          priceVal: ["800 to 1100", "3M+"],
           homeType: ["Single Family"],
           squareFeet: "2,400 - 6,000+",
           numberOfHomes: 704,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/the-lakeclub.png",
+          img: "https://sierra-public.azureedge.net/e7817013-ee0d-4e03-b7cd-fcd2a0cf70ba.jpg",
           desc: "The Lake Club is a sanctuary of prestige and tranquility, offering an exclusive living environment where the art of elegance is celebrated.",
           amenities: [
             "Clubhouse",
@@ -692,43 +717,48 @@
             "Bar or Restaurant",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/the-lake-club/",
         },
         {
           id: 14,
           name: "Waterside - Avanti",
           prices: "$300s - $400s",
-          priceVal: "100 to 300",
+          priceVal: ["100 to 300", "400 to 600"],
           homeType: ["Single Family", "Villa", "Townhomes"],
           squareFeet: "1,256 - 1,657",
           numberOfHomes: 166,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Avanti.png",
+          img: "",
           desc: "Waterside - Avanti is a waterfront haven that seamlessly blends modernity with the beauty of nature, creating an environment where every moment is a cherished memory.",
           amenities: [],
+          pageLink:
+            "https://www.lwrhome.com/waterside-lakewood-ranch/waterside-avanti/",
         },
         {
           id: 15,
           name: "Waterside - Kingfisher Estates",
           prices: "$3M+",
-          priceVal: "100 to 300",
+          priceVal: ["3M+"],
           homeType: ["Single Family"],
           squareFeet: "3,600 - 8,000",
           numberOfHomes: 13,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Kingfisher-Estates.png",
+          img: "https://sierra-public.azureedge.net/eded4b68-8c9d-4ae2-8a87-4a91decfd58a.jpg",
           desc: "Waterside - Kingfisher Estates offers a regal experience of lakeside living, where modern design and serene waterscapes combine to create an atmosphere of grandeur.",
           amenities: ["Gated"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-kingfisher-estates/",
         },
         {
           id: 16,
           name: "Waterside - Lakehouse Cove",
           prices: "$500s - $2M+",
-          priceVal: "300 to 400",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "1,625 - 5,000",
           numberOfHomes: 626,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Lakehouse-Cove.png",
+          img: "https://sierra-public.azureedge.net/7d6ed72a-5eb2-4cf5-9922-c1491379a691.jpg",
           desc: "Waterside - Lakehouse Cove paints a picture of tranquil lakeside living, where the beauty of the outdoors is embraced by modern elegance.",
           amenities: [
             "Clubhouse",
@@ -740,30 +770,34 @@
             "Pickleball",
             "Maintenance Included",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-lakehouse-cove/",
         },
         {
           id: 17,
           name: "Waterside - Nautique",
           prices: "$300s - $400s",
-          priceVal: "100 to 300",
+          priceVal: ["100 to 300", "400 to 600"],
           homeType: ["Single Family", "Townhomes"],
           squareFeet: "1,702 - 1,850",
           numberOfHomes: 222,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Nautique.png",
+          img: "https://sierra-public.azureedge.net/4e4be25e-9223-4f2b-bf87-2bf42766a5ab.jpg",
           desc: "Waterside - Nautique offers a maritime-inspired living experience, where modern luxury finds harmony with waterfront beauty, creating an environment that's both captivating and soothing.",
           amenities: ["Pool", "Dog Park", "Tot Lot", "Pickleball", "Gated"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-nautique/",
         },
         {
           id: 18,
           name: "Waterside - Shoreview",
           prices: "$900s - $2M+",
-          priceVal: "100 to 300",
+          priceVal: ["800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "2,007 - 3,900",
           numberOfHomes: 300,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Shoreview.png",
+          img: "https://sierra-public.azureedge.net/ea213ffc-f424-4ef8-8c80-e653da78a13a.jpg",
           desc: "Waterside - Shoreview invites you to a life of serenity and sophistication, where modern comforts and panoramic waterscapes converge in perfect harmony.",
           amenities: [
             "Clubhouse",
@@ -775,19 +809,23 @@
             "Pickleball",
             "Maintenance Included",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-shoreview/",
         },
         {
           id: 19,
           name: "Waterside - The Alcove",
           prices: "$800s to $1M+",
-          priceVal: "400 to 600",
+          priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "2,426 - 3,334",
           numberOfHomes: 47,
           gated: "No",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-The-Alcove.png",
+          img: "",
           desc: "Waterside - The Alcove offers an intimate living experience amidst the beauty of the waterside, providing a retreat where modern living takes on a cozy charm.",
           amenities: ["Maintenance Included"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-the-alcove/",
         },
         {
           id: 20,
@@ -798,7 +836,7 @@
           squareFeet: "2,300 - 4,400",
           numberOfHomes: 505,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Waterside-Wild-Blue.png",
+          img: "",
           desc: "Waterside - Wild Blue presents an untamed paradise of lakeside living, where modern design and the allure of the waterfront create an atmosphere of endless wonder.",
           amenities: [
             "Clubhouse",
@@ -812,6 +850,8 @@
             "Bar or Restaurant",
             "Gated",
           ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-wild-blue/",
         },
         {
           id: 21,
@@ -822,7 +862,7 @@
           squareFeet: "1,673 - 1,758",
           numberOfHomes: 253,
           gated: "Yes",
-          img: "https://assets.site-static.com/userFiles/666/image/lakewood-ranch-communities/Woodleaf-Hammock.png",
+          img: "https://sierra-public.azureedge.net/83aa6432-e8ed-4c91-bcee-53d1059c4c8b.jpg",
           desc: "Woodleaf Hammock captures the essence of natural beauty and contemporary living, providing a community where tranquility and modern comfort coexist.",
           amenities: [
             "Pool",
@@ -832,15 +872,195 @@
             "Maintenance Included",
             "Gated",
           ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/woodleaf-hammock/",
+        },
+        {
+          id: 22,
+          name: "Del Webb",
+          prices: "$600s - $1M",
+          priceVal: ["600 to 800", "800 to 1100"],
+          homeType: ["Single Family"],
+          squareFeet: "1,673 - 1,758",
+          numberOfHomes: 35,
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/2643f9be-94b1-4890-beb3-1049a9b0c678.jpeg",
+          desc: "Let's start with the resort amenity center at Del Webb Lakewood Ranch. The clubhouse will be magnificent, and includes a state of the art fitness center, group fitness studio, Wi-Fi cafe, multiple activity and gathering rooms, and a catering kitchen. What about outdoor activities? They have that covered too--a resort-style pool with lap",
+          amenities: [
+            "Clubhouse",
+            "Pool",
+            "Fitness Center",
+            "Lifestyle Director",
+            "Dog Park",
+            "Tennis",
+            "Pickleball",
+            "Bar or Resetaurant",
+            "Maintenance Included",
+            "Gated",
+            "Age Restricted",
+          ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/del-webb-at-lwr/",
+        },
+        {
+          id: 23,
+          name: "Harmony",
+          prices: "$400s TO $500s",
+          priceVal: ["300 to 400", "400 to 600"],
+          homeType: ["Townhome"],
+          squareFeet: "1,673 - 1,758",
+          numberOfHomes: 35,
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/70a4760b-ebf4-43b1-a48f-13f70684737a.jpg",
+          desc: "Harmony is centrally located in Lakewood Ranch and features both single family homes and townhomes.",
+          amenities: [
+            "Clubhouse",
+            "Pool",
+            "Fitness Center",
+            "Tot Lot",
+            "Maintenance Included",
+          ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/harmony/",
+        },
+        {
+          id: 24,
+          name: "Indigo",
+          prices: "$400s TO $500s",
+          priceVal: ["400 to 600"],
+          homeType: ["Single Family, Villas"],
+          squareFeet: "",
+          numberOfHomes: 15,
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/6b08878d-4237-46c7-9a1d-0e2f2d93385d.jpg",
+          desc: "Indigo is often cited as a community for nature lovers. Surrounded by natural preserves, including some clusters of truly stunning mature oak trees, this community is a hit with locals in Lakewood Ranch. Indigo features both single family homes and villas for prospective buyers to consider.",
+          amenities: [
+            "Clubhouse",
+            "Pool",
+            "Fitness Center",
+            "Lifestyle Director",
+            "Tot lot",
+            "Pickleball",
+            "Maintenance Included",
+            "Gated",
+          ],
+          pageLink: "https://www.lwrhome.com/lakewood-ranch/indigo/",
+        },
+        {
+          id: 25,
+          name: "Lakeshore at Main Street",
+          prices: "$400s TO $500s",
+          priceVal: ["400 to 600", "800 to 1100"],
+          homeType: ["Condo"],
+          squareFeet: "",
+          numberOfHomes: 6,
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/6b544ec8-3263-4f51-a99e-9f2316f1d5e6.jpg",
+          desc: "Displayed below are homes for sale in Lakeshore at Main St., a new condo development located in Lakewood Ranch, FL. These Lakeshore at Main St. Real Estate Listings are updated daily from the Florida MLS and include photos, property descriptions, property details, maps, local school info and more.",
+          amenities: [
+            "Pool",
+            "Fitness Center",
+            "Lifestyle Director",
+
+            "Bar or Restaurant",
+            "Maintenance Included",
+            "Gated",
+          ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/lakeshore-at-main-st/",
+        },
+        {
+          id: 26,
+          name: "Monterey Homes",
+          prices: "Coming Soon",
+          priceVal: ["100 to 300"],
+          homeType: ["Single Family"],
+          squareFeet: "",
+          numberOfHomes: "",
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/1f335246-2a70-4a79-abbf-860cc6ff3d68.jpg",
+          desc: "WELCOME to Monterey. This terrific new community in Lakewood Ranch has",
+          amenities: ["Gated"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-monterey/",
+        },
+        {
+          id: 27,
+          name: "Savanna At Lakewood Ranch",
+          prices: "$500 - 700",
+          priceVal: ["400 to 600", "800 to 1100"],
+          homeType: ["Single Family"],
+          squareFeet: "2,400 - 6,000+",
+          numberOfHomes: 4,
+          gated: "Yes",
+          img: "https://sierra-public.azureedge.net/b8001fa3-2ad3-4ab7-a2ef-283c15f23560.jpg",
+          desc: "SOMETIMES a community comes together in a way that so much makes sense. Affordable living with a luxury feel, Savanna has the right mix of amenities and maintenance provided features for a perfect blend of day to day living bliss. Savanna at Lakewood Ranch has its own clubhouse with shaded pavilion, pool with interactive features, fitness center, event lawn and open green spaces.",
+          amenities: [
+            "Clubhouse",
+            "Pool",
+            "Fitness Center",
+            "Dog Park",
+            "Maintenance Included",
+            "Gated",
+          ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/savanna-at-lakewood-ranch/",
+        },
+        {
+          id: 28,
+          name: "Waterside - Emerald Landing",
+          prices: "Price Coming Soon",
+          priceVal: [""],
+          homeType: ["Single Family", "Townhome"],
+          squareFeet: "",
+          numberOfHomes: "",
+          gated: "No",
+          img: "https://sierra-public.azureedge.net/984cf9a2-ebc4-477a-8f48-fc439b224c5b.jpg",
+          desc: "Waterside at Lakewood Ranch is built around acres of nature preserves and sits along miles and miles of shoreline for residents to enjoy. Within the community, residents can visit seven different lakes that are spotted throughout the land. While there are more neighborhoods in Waterside at Lakewood Ranch, one of the newest is Emerald Landing.",
+          amenities: ["Pool", "Dog park", "Tennis", "Maintenance"],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/waterside-emerald-landing/",
+        },
+        {
+          id: 29,
+          name: "Windward At Lakewood",
+          prices: "Villas from $400 | Single Family from $$500s - $1M+",
+          priceVal: ["400 to 600", "800 to 1100"],
+          homeType: ["Single Family", "Villa"],
+          squareFeet: "Ave. $358.82",
+          numberOfHomes: 10,
+          gated: "Yes",
+          img: "https://assets.site-static.com/userFiles/571/image/Winward.jpg",
+          desc: "Winward at Lakewood Ranch is a gated community that is located south of University Boulevard. One of only a handful of communities now in this area, Winward offers a variety of homes that start in the 300's. There are even villas that start in the high 200's too. Of course, Neal Communities always provides a variety of enticing front elevations for your consideration. Each home can be customized in a way that fits your lifestyle. So call the Casella Group for more information--we have sold hundreds of new homes and can guide you through the entire process, from start to finish!",
+          amenities: [
+            "Clubhouse",
+            "Pool",
+            "Fitness Center",
+            "Lifestyle Directory",
+            "Dog Park",
+            "Tot Lot",
+            "Tennis",
+            "Pickleball",
+            "Maintenance Included",
+            "Gated",
+          ],
+          pageLink:
+            "https://www.lwrhome.com/lakewood-ranch/windward-at-lakewood-ranch/",
         },
       ];
       // let toFilterData = [...commData];
+
+      let num_communities = commData.length;
+
+      // set total number of communities
+      // function setNumOfCommunities(num) {
+      //   const numOfComm = document.getElementById("num_communities");
+      //   numOfComm.innerText = num;
+      // }
+      // setNumOfCommunities(num_communities);
 
       // filter function
       function filter() {
         const filterByPriceData = filterByPrice();
         const filterByHomeTypeData = filterByHomeType(filterByPriceData);
-        filterByAmenities(filterByHomeTypeData);
+        const finalFilterData = filterByAmenities(filterByHomeTypeData);
 
         // uncheckButton(priceInput);
         hideAllModal();
@@ -864,7 +1084,8 @@
         if (priceValue.length !== 0) {
           priceValue.forEach((price) => {
             const filteredByRange = toFilterData.filter(
-              (item) => item.priceVal === price
+              // (item) => item.priceVal === price
+              (item) => item.priceVal.includes(price)
             );
             filteredData.push(...filteredByRange);
           });
@@ -1017,6 +1238,7 @@
             img,
             desc,
             amenities,
+            pageLink,
           } = data;
 
           let amenitiesData = "";
@@ -1080,15 +1302,9 @@
                             Schedule an Appointment
                         </a>
 
-                        <button
-                          onclick="scheduleAppointmentHandler(${id})"
-                          id="home_sale_${id}"
-                          style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
-                          onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-                        >
-                          Homes for Sale
-                        </button>
+                        <a href=${pageLink} target="_blank" style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-right: 1rem;">
+                            Home for Sale
+                        </a>
 
                         <button
                           onclick="showAmenities(${id})"
