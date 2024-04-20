@@ -73,42 +73,42 @@
 
       function generateFilterHTML() {
         return `
-        <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto; width: 90%; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 20px;">
-    <div id="filter" class="filter-checkbox" style="width: 100%; display: grid; gap: 20px;">
-        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">HOA DUES</h6>
-            </div>
-            <div class="something-checkbox" style="padding: 8px;">
-                ${generateHoaduesInput()}
-            </div>
-        </div>
+              <div id="filter-root" style="background-color: rgb(235, 235, 250); margin: 10px auto; width: 90%; padding: 15px; border-radius: 5px; display: flex; flex-direction: column; gap: 20px;">
+          <div id="filter" class="filter-checkbox" style="width: 100%; display: grid; gap: 20px;">
+              <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+                  <div class="something-head">
+                      <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">HOA DUES</h6>
+                  </div>
+                  <div class="something-checkbox" style="padding: 8px;">
+                      ${generateHoaduesInput()}
+                  </div>
+              </div>
 
-        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Home Type</h6>
-            </div>
-            <div class="something-checkbox" style="padding: 10px;">
-                ${generateHomeTypeInput()}
-            </div>
-        </div>
+              <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+                  <div class="something-head">
+                      <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Home Type</h6>
+                  </div>
+                  <div class="something-checkbox" style="padding: 10px;">
+                      ${generateHomeTypeInput()}
+                  </div>
+              </div>
 
-        <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
-            <div class="something-head">
-                <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Amenities</h6>
-            </div>
-            <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                ${generateAmenitiesInput()}
-            </div>
-        </div>
-    </div>
-    <div style="display: flex; justify-content: center; gap: 25px;">
-        <button id="filter" onclick="filter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Apply Filter</button>
-        <button id="reset" onclick="resetFilter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Reset Filter</button>
-    </div>
-</div>
+              <div class="filter-something" style="border-radius: 10px; background-color: #f8f9fa;">
+                  <div class="something-head">
+                      <h6 class="something-h6" style="text-align: center; margin: 10px 0; font-size: 1.4rem; color: #18305f;">Amenities</h6>
+                  </div>
+                  <div class="something-checkbox" style="padding: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                      ${generateAmenitiesInput()}
+                  </div>
+              </div>
+          </div>
+          <div style="display: flex; justify-content: center; gap: 25px;">
+              <button id="filter" onclick="filter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Apply Filter</button>
+              <button id="reset" onclick="resetFilter()" style="font-size: 1rem; border: none; padding: 8px 20px; background-color: var(--si-secondary-color-800); color: white; border-radius: 5px; cursor: pointer;" onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'" onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'">Reset Filter</button>
+          </div>
+      </div>
 
-      `;
+            `;
       }
 
       function generateHoaduesInput() {
@@ -126,63 +126,79 @@
             const { id, label, val } = item;
 
             return `
-                <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" data-price="${val}" id="${id}" class="filter-radio-price something-radio" style="margin-right: 5px; width: 17px; height: 17px;">
-                    <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${item.label}</label>
-                </div>`;
+                      <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
+                          <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" data-price="${val}" id="${id}" class="filter-radio-price something-radio" style="margin-right: 5px; width: 17px; height: 17px;">
+                          <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${item.label}</label>
+                      </div>`;
           })
           .join("");
       }
 
       function generateHomeTypeInput() {
         const checkboxes = [
-          { id: "home_type_1", label: "Single Family", val: "Single family" },
-          { id: "home_type_2", label: "Villa", val: "Villa" },
-          { id: "home_type_3", label: "Condo", val: "Condo" },
-          { id: "home_type_4", label: "Townhomes", val: "Townhomes" },
+          { id: "home_type_1", label: "Single Family", val: "single family" },
+          { id: "home_type_2", label: "Villa", val: "villa" },
+          { id: "home_type_3", label: "Condo", val: "condo" },
+          { id: "home_type_4", label: "Townhomes", val: "townhomes" },
         ];
 
         return checkboxes
           .map((item) => {
             const { id, label, val } = item;
             return `
-                  <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
-                      <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" id="${id}" data-homeType="${val}" class="home-type something-radio" style="margin-right: 5px; font-size: 16px; width: 17px; height: 17px;">
-                      <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${label}</label>
-                  </div>`;
+                        <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" id="${id}" data-homeType="${val}" class="home-type something-radio" style="margin-right: 5px; font-size: 16px; width: 17px; height: 17px;">
+                            <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${label}</label>
+                        </div>`;
           })
           .join("");
       }
 
       function generateAmenitiesInput() {
         const checkboxes = [
-          { id: "amenities_1", label: "Clubhouse" },
-          { id: "amenities_2", label: "Pool" },
-          { id: "amenities_3", label: "Fitness Center" },
-          { id: "amenities_4", label: "Lifestyle Director" },
-          { id: "amenities_5", label: "Dog Park" },
-          { id: "amenities_6", label: "Tot Lot" },
-          { id: "amenities_7", label: "Golf" },
-          { id: "amenities_8", label: "Tennis" },
-          { id: "amenities_9", label: "Pickleball" },
-          { id: "amenities_10", label: "Bar or Restaurant" },
-          { id: "amenities_11", label: "Age Restricted" },
-          { id: "amenities_12", label: "Maintenance Included" },
-          { id: "amenities_13", label: "Gated" },
+          { id: "amenities_1", label: "Clubhouse", val: "clubhouse" },
+          { id: "amenities_2", label: "Pool", val: "pool" },
+          { id: "amenities_3", label: "Fitness Center", val: "fitness center" },
+          {
+            id: "amenities_4",
+            label: "Lifestyle Director",
+            val: "lifestyle director",
+          },
+          { id: "amenities_5", label: "Dog Park", val: "dog park" },
+          { id: "amenities_6", label: "Tot Lot", val: "tot lot" },
+          { id: "amenities_7", label: "Golf", val: "golf" },
+          { id: "amenities_8", label: "Tennis", val: "tennis" },
+          { id: "amenities_9", label: "Pickleball", val: "pickleball" },
+          {
+            id: "amenities_10",
+            label: "Bar or Restaurant",
+            val: "bar or restaurant",
+          },
+          {
+            id: "amenities_11",
+            label: "Age Restricted",
+            val: "age restricted",
+          },
+          {
+            id: "amenities_12",
+            label: "Maintenance Included",
+            val: "maintenance included",
+          },
+          { id: "amenities_13", label: "Gated", val: "gated" },
         ];
 
         return checkboxes
           .map((item) => {
-            const { id, label } = item;
+            const { id, label, val } = item;
             return `
-                  <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
-                      <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" id="${id}" data-amenities="${label}" class="filter-radio-amenities something-radio" style="background-color: red; margin-right: 5px; font-size: 16px; width: 17px; height: 17px;">
-                      <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${
+                        <div class="checkbox-pair" style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <input onclick="uncheckIfChecked('${id}')"  type="radio" name="${id}" id="${id}" data-amenities="${val}" class="filter-radio-amenities something-radio" style="background-color: red; margin-right: 5px; font-size: 16px; width: 17px; height: 17px;">
+                            <label for="${id}" style="margin-bottom: 0; font-size: 0.8rem; color: #18305f;">${
               item.label == "Maintenance Included"
                 ? "Maint. Included"
                 : item.label
             }</label>
-                  </div>`;
+                        </div>`;
           })
           .join("");
       }
@@ -429,214 +445,222 @@
       }
 
       // end filter section
-
       const commData = [
         {
           id: 1,
           name: "Aurora",
           prices: "Low $300's",
-          priceVal: ["100 to 300", "300 - 400"],
-          homeType: ["Townhomes", "Single family"],
-          amenities: ["Tot Lot"],
+          priceVal: ["100 to 300", "300 to 400"],
+          homeType: ["townhomes", "Single family"],
           squareFeet: "1,347 - 2,382",
           numberOfHomes: 300,
           gated: "No",
           img: "https://sierra-public.azureedge.net/bbd882c7-7b84-48b9-b9b4-e7d829a03234.jpg",
           desc: "Auroa offers Town-Homes and Patio Homes located in Lakewood Ranch and will start in Low $300's.",
+          amenities: ["tot lot"],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/aurora/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 2,
           name: "Avalon Woods",
           prices: "From $300s to $400s",
           priceVal: ["100 to 300", "300 to 400"],
-          homeType: ["Townhomes", "Single Family"],
+          homeType: ["townhomes", "single family"],
           amenities: ["Dog Park", "Tot Lot"],
           squareFeet: "1,440 - 2,370",
           numberOfHomes: 339,
           gated: "No",
           img: "https://sierra-public.azureedge.net/ecbec5df-bcde-4d11-9b31-b776aa597e64.jpg",
           desc: "Avalon Woods presents a living experience that combines the beauty of natural surroundings with the convenience of contemporary amenities, offering a lifestyle tailored to both leisure and elegance.",
-          amenities: ["Tot Lot", "Dog Park"],
+          amenities: ["tot lot", "dog park"],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/avalon-woods/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 3,
           name: "Azario Esplanade",
           prices: "$500s - $1M+",
           priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
-          homeType: ["Paired/Attached Villas", "Single family"],
+          homeType: ["villas", "single family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 1300,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/ba5a63d4-0e43-489c-a3fa-447b3c3d465d.jpg",
           desc: "Nestled in the heart of Lakewood Ranch Real Estate, Azario Esplanade stands as a testament to refined living, providing an idyllic retreat that perfectly balances relaxation and sophistication.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Lifestyle Director",
-            "Dog Park",
-            "Tot Lot",
-            "Golf",
-            "Tennis",
-            "Pickleball",
-            "Bar or Resetaurant",
-            "Maintenance Included",
-            "Gated",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "lifestyle director",
+            "dog park",
+            "tot lot",
+            "golf",
+            "tennis",
+            "pickleball",
+            "bar or resetaurant",
+            "maintenance included",
+            "gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/azario/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 4,
           name: "Park East at Azario",
           prices: "$500s - $1M+",
           priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
-          homeType: ["Single family"],
+          homeType: ["single family"],
           squareFeet: "1,500 - 4,000",
           numberOfHomes: 307,
           gated: "No",
           img: "https://sierra-public.azureedge.net/3efe82a2-b643-4f6d-83ab-b69af6f017fb.jpg",
           desc: "Azario - Park East offers a harmonious blend of natural allure and modern luxury, creating an inviting community that celebrates both comfort and style.",
-          amenities: ["Pool", "Dog Park", "Tot Lot"],
+          amenities: ["pool", "dog park", "tot lot"],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/park-east-at-azario/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 5,
           name: "Cresswind",
           prices: "$500s - $1M+",
           priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
-          homeType: ["Single family"],
+          homeType: ["single family"],
           squareFeet: "1,500 - 3,500",
           numberOfHomes: 648,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/df0bec45-de05-47e5-8ed7-990fe05e138b.jpg",
           desc: "Cresswind is more than just a community; it's a vibrant tapestry of active living and comfort. Here, every moment becomes an opportunity to embrace life's pleasures.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Lifestyle Director",
-            "Dog Park",
-            "Tennis",
-            "Pickleball",
-            "Maintenance Included",
-            "Gated",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "lifestyle director",
+            "dog park",
+            "tennis",
+            "pickleball",
+            "maintenance included",
+            "gated",
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/cresswind-in-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 6,
           name: "Lorraine Lakes",
           prices: "$500s - $1M+",
           priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
-          homeType: ["Townhome", "villa", "Single Family"],
+          homeType: ["townhome", "villa", "single family"],
           squareFeet: "1,417 - 3,945",
           numberOfHomes: 1347,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/6fd00187-7f89-4c4a-a9d5-dada6fa28d2f.jpg",
           desc: "Lorraine Lakes is a portrait of natural beauty and modern elegance, inviting you to experience a lifestyle where every day feels like a picturesque escape.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Lifestyle Director",
-            "Tennis",
-            "Pickleball",
-            "Bar or Restaurant",
-            "Tot Lot",
-            "Maintenance Included",
-            "Gated",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "lifestyle director",
+            "tennis",
+            "pickleball",
+            "bar or restaurant",
+            "tot lot",
+            "maintenance included",
+            "gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/lorraine-lakes/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 7,
           name: "Monarch Acres",
           prices: "$3M+",
           priceVal: ["3M+"],
-          homeType: ["Single Family"],
+          homeType: ["single family"],
           squareFeet: "3,600 - 8,000",
           numberOfHomes: 8,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/3b6b75d8-0b74-4442-9f64-f6ad7e6848fc.jpg",
           desc: "Monarch Acres is a realm of refined living, where every home is a masterpiece and every moment is an opportunity to bask in the artistry of life.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Lifestyle Director",
-            "Tennis",
-            "Pickleball",
-            "Bar or Restaurant",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "lifestyle director",
+            "tennis",
+            "pickleball",
+            "bar or restaurant",
             "Tot Lot",
-            "Maintenance Included",
-            "Gated",
+            ",aintenance included",
+            "gated",
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-monarch-acres/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 8,
           name: "Sapphire Point",
           prices: "$400s - $800s",
           priceVal: ["400 to 600", "600 to 800"],
-          homeType: ["Single Family"],
+          homeType: ["single family"],
           squareFeet: "1,433 - 5,363",
           numberOfHomes: 451,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/5f4b568b-84b6-4bb0-baf3-07ebc46f1800.jpg",
           desc: "Sapphire Point offers an oasis of elegance and tranquility, where the sparkle of modern living meets the timeless allure of nature's beauty.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Dog park",
-            "Tot Lot",
-            "Maintenance Included",
-            "Gated",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "dog park",
+            "tot lot",
+            "maintenance included",
+            "gated",
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/sapphire-point-at-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 9,
           name: "Solera",
           prices: "$400s - $800s",
           priceVal: ["400 to 600", "600 to 800"],
-          homeType: ["Single Family"],
+          homeType: ["single family"],
           squareFeet: "1,672 - 4,033",
           numberOfHomes: 672,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/76b76302-0e24-4436-839d-fe26b4631bd0.jpg",
           desc: "Solera presents a lifestyle that's as vibrant as it is tranquil, offering a community where energy and serenity coexist in perfect harmony.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
-            "Tot Lot",
-            "Gated",
+            "clubhouse",
+            "pool",
+            "fitness center",
+            "tot lot",
+            "gated",
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/solera-at-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 10,
           name: "Star Farms",
           prices: "$300s - $2M+",
           priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
-          homeType: ["Single Family", "Villa", "Townhomes"],
+          homeType: ["single family", "villa", "townhomes"],
           squareFeet: "1,560 - 5,000",
           numberOfHomes: 1500,
           gated: "Yes",
           img: "https://sierra-public.azureedge.net/70e38c38-6a96-4425-8044-06f0bc19733e.jpg",
           desc: "Star Farms is more than just a community; it's a constellation of modern comforts and natural wonders, where each day shines with new possibilities.",
           amenities: [
-            "Clubhouse",
-            "Pool",
-            "Fitness Center",
+            "clubhouse",
+            "pool",
+            "fitness center",
             "Lifestyle Director",
             "Dog park",
             "Tennis",
@@ -647,12 +671,13 @@
             "Gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/star-farms/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 11,
           name: "Sweetwater",
           prices: "$400s - $1M+",
-          priceVal: "100 to 300",
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family", "Villa"],
           squareFeet: "1,452 - 3,651",
           numberOfHomes: 502,
@@ -669,12 +694,13 @@
             "Gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/sweetwater/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 12,
           name: "The Isles",
           prices: "From $400s to $1,500s",
-          priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
+          priceVal: ["400 to 600", "600 to 800", "800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "1,400 - 1,800",
           numberOfHomes: 450,
@@ -693,6 +719,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/the-isles-at-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 13,
@@ -718,6 +745,7 @@
             "Gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/the-lake-club/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 14,
@@ -733,6 +761,7 @@
           amenities: [],
           pageLink:
             "https://www.lwrhome.com/waterside-lakewood-ranch/waterside-avanti/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 15,
@@ -772,6 +801,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-lakehouse-cove/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 17,
@@ -787,6 +817,7 @@
           amenities: ["Pool", "Dog Park", "Tot Lot", "Pickleball", "Gated"],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-nautique/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 18,
@@ -811,12 +842,13 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-shoreview/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 19,
           name: "Waterside - The Alcove",
           prices: "$800s to $1M+",
-          priceVal: ["100 to 300", "400 to 600", "600 to 800", "800 to 1100"],
+          priceVal: ["600 to 800", "800 to 1100"],
           homeType: ["Single Family"],
           squareFeet: "2,426 - 3,334",
           numberOfHomes: 47,
@@ -826,6 +858,7 @@
           amenities: ["Maintenance Included"],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-the-alcove/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 20,
@@ -852,6 +885,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-wild-blue/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 21,
@@ -873,6 +907,7 @@
             "Gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/woodleaf-hammock/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 22,
@@ -899,6 +934,7 @@
             "Age Restricted",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/del-webb-at-lwr/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 23,
@@ -919,6 +955,7 @@
             "Maintenance Included",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/harmony/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 24,
@@ -942,6 +979,7 @@
             "Gated",
           ],
           pageLink: "https://www.lwrhome.com/lakewood-ranch/indigo/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 25,
@@ -965,6 +1003,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/lakeshore-at-main-st/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 26,
@@ -980,6 +1019,7 @@
           amenities: ["Gated"],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-monterey/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 27,
@@ -1002,6 +1042,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/savanna-at-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 28,
@@ -1017,6 +1058,7 @@
           amenities: ["Pool", "Dog park", "Tennis", "Maintenance"],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/waterside-emerald-landing/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
         {
           id: 29,
@@ -1043,6 +1085,7 @@
           ],
           pageLink:
             "https://www.lwrhome.com/lakewood-ranch/windward-at-lakewood-ranch/",
+          contactLink: "https://www.lwrhome.com/contact/",
         },
       ];
       // let toFilterData = [...commData];
@@ -1074,6 +1117,8 @@
         let toFilterData = [...commData];
         const filteredData = [];
 
+        console.log("Price", toFilterData);
+
         // get the checked button
         priceInput.forEach((input) => {
           if (input.checked) {
@@ -1091,43 +1136,57 @@
           });
 
           generateData(filteredData);
+          return filteredData;
+        } else {
+          console.log("filter by price", filteredData);
+          generateData(toFilterData);
+          return toFilterData;
         }
-
-        // uncheckButton(priceInput);
-        return filteredData;
       }
 
       function filterByHomeType(data) {
-        console.log("data", data);
         const homeTypeInput = document.querySelectorAll(".home-type");
 
         let homeTypeVal = [];
-        const toFilterData = data.length !== 0 ? [...data] : [...commData];
+        const toFilterData = data;
         const filteredData = [];
 
-        console.log("toFilterData", toFilterData);
+        console.log("home type", data);
+
         // get the checked button
         homeTypeInput.forEach((opt) => {
-          // console.log(opt.checked);
           if (opt.checked) {
             homeTypeVal.push(opt.getAttribute("data-homeType"));
           }
         });
 
-        // console.log("homeTypeVal", homeTypeVal);
+        console.log("homeType", homeTypeVal);
 
+        // if there are filter by home type selected
         if (homeTypeVal.length !== 0) {
           homeTypeVal.forEach((type) => {
-            const filteredByType = toFilterData.filter((item) => {
-              return item.homeType.includes(type);
+            toFilterData.forEach((item) => {
+              item.homeType.forEach((ht) => {
+                if (ht.toLowerCase() == type.toLowerCase()) {
+                  // console.log("ht", ht);
+                  // return ht;
+                  filteredData.push(item);
+                }
+              });
+              // return item.homeType.includes(type.toLowerCase());
             });
 
-            filteredData.push(...filteredByType);
+            // filteredData.push(...filteredByType);
           });
-          generateData(filteredData);
+
+          console.log("filteredData", filteredData);
+          const noDuplicateData = removeDuplicates(filteredData);
+          generateData(noDuplicateData);
+          return noDuplicateData;
+        } else {
+          generateData(toFilterData);
+          return toFilterData;
         }
-        // uncheckButton(homeTypeInput);
-        return filteredData;
       }
 
       function filterByAmenities(data) {
@@ -1136,12 +1195,11 @@
           ".filter-radio-amenities"
         );
 
-        const toFilterData = data.length !== 0 ? [...data] : [...commData];
-        console.log("data", data);
-        console.log("toFilterData", toFilterData);
-
+        const toFilterData = data;
         let toFilter = [];
         const filteredData = [];
+
+        console.log("amenities", data);
 
         // get the checked button
         amenitiesInputObj.forEach((opt) => {
@@ -1150,21 +1208,26 @@
           }
         });
 
-        console.log("toFilter", toFilter);
-
+        // if there are filter for amenities selected
         if (toFilter.length !== 0) {
           toFilter.forEach((type) => {
             const filteredByAmeities = toFilterData.filter((item) => {
-              return item.amenities.includes(type);
+              const amenitiesLowerCase = [];
+              item.amenities.forEach((amenity) => {
+                amenitiesLowerCase.push(amenity.toLowerCase());
+              });
+              if (amenitiesLowerCase.includes(type.toLowerCase())) {
+                return item;
+              }
             });
 
             filteredData.push(...filteredByAmeities);
           });
           const noDuplicateData = removeDuplicates(filteredData);
           generateData(noDuplicateData);
+          console.log("amenities", noDuplicateData);
+          return noDuplicateData;
         }
-        // uncheckButton(amenitiesInputObj);
-        return filteredData;
       }
 
       // Function to filter duplicate objects based on ID
@@ -1209,7 +1272,6 @@
           input.checked = false;
         });
 
-        // toFilterData = [...commData];
         generateData(commData);
         hideAllModal();
         handleViewportChange();
@@ -1239,86 +1301,88 @@
             desc,
             amenities,
             pageLink,
+            contactLink,
           } = data;
 
           let amenitiesData = "";
           amenities.forEach((amen) => {
             amenitiesData += `
-                  <li style="font-size: 16px">${amen}</li>
-                `;
+                        <li style="font-size: 16px">${amen}</li>
+                      `;
           });
 
           content += `
-              <div class="grid-container" style="background-color: #ebebfa; display: grid; grid-template-columns: 1fr 1fr; margin: 3rem auto; max-width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); transition: box-shadow 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19)';" onmouseout="this.style.boxShadow='0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)';">
+                    <div class="grid-container" style="border-radius: 5px; overflow: hidden; background-color: #ebebfa; display: grid; grid-template-columns: 1fr 1fr; margin: 3rem auto; max-width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); transition: box-shadow 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19)';" onmouseout="this.style.boxShadow='0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)';">
 
-                <div class="img-cont" style="clip-path: polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%);">
-                    <img style="width: 100%; height: 100%; margin: 0 !important;" src="${img}" alt="${name} image" />
-                </div>
+                      <div class="img-cont" style="clip-path: polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%);">
+                          <img style="width: 100%; height: 100%; margin: 0 !important;" src="${img}" alt="${name} image" />
+                      </div>
 
-                <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">
+                      <div class="details-card" style="background-color: transparent !important; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">
 
-                    <div style="width: 100%; display: flex; justify-content: center;
-                    align-items: center; margin-bottom: 1rem; font-size: 28px; font-weight: bold;">${name}</div>
+                          <div style="width: 100%; display: flex; justify-content: center;
+                          align-items: center; font-size: 28px; font-weight: bold;">${name}</div>
 
-                    <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid white;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px;">
-                            <p style="font-size: 1rem; margin: 0;">Prices</p>
-                            <p style="font-size: 1rem; margin: 0;">${prices}</p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px; border-top: 1px solid white; ">
-                            <p style="font-size: 1rem; margin: 0;">Home Type</p>
-                            <p style="font-size: 1rem; margin: 0;">${homeType}</p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px; border-top: 1px solid white; ">
-                            <p style="font-size: 1rem; margin: 0;">Square Feet</p>
-                            <p style="font-size: 1rem; margin: 0;">${squareFeet}</p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px; border-top: 1px solid white; ">
-                            <p style="font-size: 1rem; margin: 0;">Number of Homes</p>
-                            <p style="font-size: 1rem; margin: 0;">${numberOfHomes}</p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px; border-top: 1px solid white; ">
-                            <p style="font-size: 1rem; margin: 0;">Gated</p>
-                            <p style="font-size: 1rem; margin: 0;">${gated}</p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px; border-top: 1px solid white; ">
-                            <p style="font-size: 1rem; margin: 0;">${desc}</p>
-                        </div>
-                    </div>
+                          <div style="display: flex; flex-direction: column; gap: 5px; border-top: 1px solid white;">
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px;">
+                                  <p style="font-size: 1rem; margin: 0;">Prices</p>
+                                  <p style="font-size: 1rem; margin: 0;">${prices}</p>
+                              </div>
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px; border-top: 1px solid white; ">
+                                  <p style="font-size: 1rem; margin: 0;">Home Type</p>
+                                  <p style="font-size: 1rem; margin: 0;">${homeType}</p>
+                              </div>
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px; border-top: 1px solid white; ">
+                                  <p style="font-size: 1rem; margin: 0;">Square Feet</p>
+                                  <p style="font-size: 1rem; margin: 0;">${squareFeet}</p>
+                              </div>
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px; border-top: 1px solid white; ">
+                                  <p style="font-size: 1rem; margin: 0;">Number of Homes</p>
+                                  <p style="font-size: 1rem; margin: 0;">${numberOfHomes}</p>
+                              </div>
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px; border-top: 1px solid white; ">
+                                  <p style="font-size: 1rem; margin: 0;">Gated</p>
+                                  <p style="font-size: 1rem; margin: 0;">${gated}</p>
+                              </div>
+                              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0px 5px; border-top: 1px solid white; ">
+                                  <p style="font-size: 1rem; margin: 0;">${desc}</p>
+                              </div>
+                          </div>
 
-                    <div id="amenities_modal_${id}" class="modal" style="position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-                      <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 10px; border: 1px solid #888; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
-                        <span onclick="closeModal(${id})" class="close" style="color: red; float: right; font-size: 38px; font-weight: bold; cursor: pointer;">&times;</span>
-                        <p style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Amenities for ${name}:</p>
-                        <ul style="display: flex; flex-direction: column; flex-wrap: wrap; column-gap: 20px; height: 200px; padding: 5pxs 15px; max-width: 60%;">
-                          ${amenitiesData}
-                        </ul>
+                          <div id="amenities_modal_${id}" class="modal" style="position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+                            <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 10px; border: 1px solid #888; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
+                              <span onclick="closeModal(${id})" class="close" style="color: red; float: right; font-size: 38px; font-weight: bold; cursor: pointer;">&times;</span>
+                              <p style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Amenities for ${name}:</p>
+                              <ul style="display: flex; flex-direction: column; flex-wrap: wrap; column-gap: 20px; height: 200px; padding: 5pxs 15px; max-width: 60%;">
+                                ${amenitiesData}
+                              </ul>
+                            </div>
+                          </div>
+
+
+                          <div id="controller" style="margin-top: 12px; display: flex; justify-content: left; flex-wrap: wrap; align-items: center; row-gap: 5px;">
+                              <a class="ctrl" href=${contactLink} style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; text-decoration: none; border-radius: 0px; cursor: pointer; transition: background-color 0.3s ease; margin-right: 1rem;">
+                                  Schedule an Appointment
+                              </a>
+
+                              <a class="ctrl" href=${pageLink} target="_blank" style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; text-decoration: none; border-radius: 0px; cursor: pointer; transition: background-color 0.3s ease; margin-right: 1rem;">
+                                  Homes for Sale
+                              </a>
+
+                              <button
+                                class="ctrl"
+                                onclick="showAmenities(${id})"
+                                id="amenities_btn_${id}"
+                                style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; border: none; border-radius: 0px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
+                                onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
+                                onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
+                              >
+                                Amenities
+                              </button>
+                          </div>
                       </div>
                     </div>
-
-
-                    <div id="controller" style="margin-top: 12px; display: flex; justify-content: left; align-items: center; flex-wrap: wrap; row-gap: 5px;">
-                        <a href="https://www.lwrhome.com/contact/" style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-right: 1rem;">
-                            Schedule an Appointment
-                        </a>
-
-                        <a href=${pageLink} target="_blank" style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-right: 1rem;">
-                            Home for Sale
-                        </a>
-
-                        <button
-                          onclick="showAmenities(${id})"
-                          id="amenities_btn_${id}"
-                          style="background-color: var(--si-secondary-color-800); padding: 0.3rem 0.5rem; font-size: 1rem; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-left: 1rem;"
-                          onmouseover="this.style.backgroundColor='var(--si-primary-color-500)'"
-                          onmouseout="this.style.backgroundColor='var(--si-secondary-color-800)'"
-                        >
-                          Amenities
-                        </button>
-                    </div>
-                </div>
-              </div>
-              `;
+                    `;
         });
 
         main.innerHTML = content;
@@ -1362,8 +1426,12 @@
         const modelContent = document.querySelectorAll(".modal-content");
 
         if (viewportWidth <= 850) {
-          main.style.width = "95%";
-          rootFilter.style.width = "95%";
+          // Set flex direction to column to stack buttons vertically
+          controller.style.flexDirection = "column";
+
+          // Adjust widths and grid layout for smaller viewport
+          main.style.width = "100%";
+          rootFilter.style.width = "100%";
 
           modelContent.forEach((mc) => {
             mc.style.width = "90%";
@@ -1372,7 +1440,6 @@
           const filterBox = document.getElementById("filter");
           filterBox.style.gridTemplateColumns = "1fr";
 
-          const imageContainer = document.querySelectorAll(".img-cont");
           imageContainer.forEach((cont) => {
             cont.style.clipPath = "none";
           });
@@ -1382,47 +1449,54 @@
             container.style.gridTemplateColumns = "1fr";
             container.style.gap = "10px";
           });
-        } else if (viewportWidth > 850 && viewportWidth < 1200) {
-          main.style.width = "100%";
-          rootFilter.style.width = "100%";
-
-          modelContent.forEach((mc) => {
-            mc.style.width = "70%";
-          });
-
-          const imageContainer = document.querySelectorAll(".img-cont");
-          imageContainer.forEach((cont) => {
-            cont.style.clipPath =
-              "polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%)";
-          });
-
-          const gridContainers = document.querySelectorAll(".grid-container");
-          gridContainers.forEach((container) => {
-            container.style.gridTemplateColumns = "1fr 1fr";
-            container.style.gap = "10px";
-          });
         } else {
-          main.style.width = "100%";
-          rootFilter.style.width = "100%";
+          // Reset flex direction to default if viewport width is larger
+          controller.style.flexDirection = "row";
 
-          modelContent.forEach((mc) => {
-            mc.style.width = "50%";
-          });
+          if (viewportWidth < 1200) {
+            // Adjust widths and grid layout for medium viewport
+            main.style.width = "100%";
+            rootFilter.style.width = "100%";
 
-          const filterBox = document.getElementById("filter");
-          filterBox.style.gridTemplateColumns = "repeat(3, 1fr)";
+            modelContent.forEach((mc) => {
+              mc.style.width = "70%";
+            });
 
-          const imageContainer = document.querySelectorAll(".img-cont");
-          imageContainer.forEach((cont) => {
-            cont.style.clipPath =
-              "polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%)";
-          });
+            const imageContainer = document.querySelectorAll(".img-cont");
+            imageContainer.forEach((cont) => {
+              cont.style.clipPath =
+                "polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%)";
+            });
 
-          const gridContainers = document.querySelectorAll(".grid-container");
-          gridContainers.forEach((container) => {
-            container.style.gridTemplateColumns = "1fr 1fr";
-            container.style.gap = "15px";
-          });
+            const gridContainers = document.querySelectorAll(".grid-container");
+            gridContainers.forEach((container) => {
+              container.style.gridTemplateColumns = "1fr 1fr";
+              container.style.gap = "10px";
+            });
+          } else {
+            // Adjust widths and grid layout for larger viewport
+            main.style.width = "100%";
+            rootFilter.style.width = "100%";
+
+            modelContent.forEach((mc) => {
+              mc.style.width = "50%";
+            });
+
+            const filterBox = document.getElementById("filter");
+            filterBox.style.gridTemplateColumns = "repeat(3, 1fr)";
+
+            const imageContainer = document.querySelectorAll(".img-cont");
+            imageContainer.forEach((cont) => {
+              cont.style.clipPath =
+                "polygon(0.25% 0%, 100% 0%, 92.9% 100%, 0% 100%)";
+            });
+
+            const gridContainers = document.querySelectorAll(".grid-container");
+            gridContainers.forEach((container) => {
+              container.style.gridTemplateColumns = "1fr 1fr";
+              container.style.gap = "15px";
+            });
+          }
         }
       }
 
